@@ -12,7 +12,9 @@ router.get('/', (req, res) => {
 //TODO Post route for the form
 router.post('/new', (req, res) => {
   db.Post.create({
-    pic: req.body.pic
+    pic: req.body.pic,
+    content: req.body.content,
+    caption: req.body.caption
   })
   .then(post => {
     res.send(post)
