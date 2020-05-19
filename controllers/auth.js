@@ -50,7 +50,7 @@ router.post('/signup', (req, res) => {
     .then(newUser => {
       // Yay! Things worked and users exists now! Create a token for the new user
       let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
-        expiresIn: 60 * 60 * 8 // 8 hours, in seconds
+        expiresIn:  60 * 60 * 8 // 8 hours, in seconds
       })
 
       res.send({ token })

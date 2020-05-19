@@ -14,3 +14,4 @@ let faveSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Fave', faveSchema)
+

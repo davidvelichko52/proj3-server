@@ -1,12 +1,11 @@
 let mongoose = require('mongoose')
 
-
-let commentSchema = new mongoose.Schema ({
+let commentSchema = new mongoose.Schema({
     content: String,
-    userId:{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    } 
+    }
 })
 
 let postSchema = new mongoose.Schema({
@@ -14,7 +13,7 @@ let postSchema = new mongoose.Schema({
     content: String,
     caption: String,
     comment: commentSchema,
-    userId:{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

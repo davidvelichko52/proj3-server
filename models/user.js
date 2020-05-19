@@ -14,6 +14,8 @@ let userSchema = new mongoose.Schema({
         unique: true,
         minlength: 6
     },
+    phone: String,
+    bday: String,
     password: {
         type: String,
         required: true,
@@ -22,6 +24,8 @@ let userSchema = new mongoose.Schema({
     phone: String,
     bday: String,
     pic: String,
+    phone: String,
+    bday: String,
     admin: {
         type: Boolean,
         default: false
@@ -31,7 +35,7 @@ let userSchema = new mongoose.Schema({
 // Hash the passwords with BCrypt
 userSchema.pre('save', function (done) {
     // Make sure it's new, as opposed to modified
-    if (this.isNew) { 
+    if (this.isNew) {
         this.password = bcrypt.hashSync(this.password, 12)
     }
     // Indicate that we're okay to move on (to insert into the DB)
