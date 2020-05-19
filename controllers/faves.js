@@ -1,3 +1,4 @@
+
 const router = require('express').Router()
 const db = require('../models')
 router.use(require('express').static('static'))
@@ -31,8 +32,4 @@ router.delete('/results/:id', (req, res)=> {
 })
 
 module.exports = router
-//TODO get routes for seeing all your favorites
 
-//TODO post route for sending clicked faves to user faves list
-
-//TODO make it so when clicked again we un favorite probably put route  
