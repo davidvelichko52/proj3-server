@@ -19,6 +19,8 @@ let userSchema = new mongoose.Schema({
         required: true,
         minlength: 8
     },
+    phone: String,
+    bday: String,
     pic: String,
     admin: {
         type: Boolean,

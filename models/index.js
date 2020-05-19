@@ -7,3 +7,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern-sei', {
 })
 
 module.exports.User = require('./user')
+module.exports.User = require('./post')
+module.exports.User = require('./fave')
