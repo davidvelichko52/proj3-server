@@ -1,5 +1,6 @@
 let mongoose = require('mongoose')
 
+
 let faveSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -13,3 +14,4 @@ let faveSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Fave', faveSchema)
+
