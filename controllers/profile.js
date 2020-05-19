@@ -1,4 +1,5 @@
 let router = require('express').Router()
+let db = require('../models')
 
 // NOTE: User should be logged in to access this route
 router.get('/', (req, res) => {
@@ -22,7 +23,6 @@ router.get('/', (req, res) => {
     // To avoid this, reissue a token when you update user data
 
 })
-
 
 //TODO Still needs a button //////// create put route for edditing profile
 router.put('/:id', (req, res) => {
