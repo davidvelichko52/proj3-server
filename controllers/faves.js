@@ -3,13 +3,13 @@ const router = require('express').Router()
 const db = require('../models')
 router.use(require('express').static('static'))
 
-router.post('/results', (req, res) => {
+router.post('/', (req, res) => {
     console.log('YOOOOOOOOO!!!', req.body)
     db.Post.create(req.body)
     .then(newFav => {
         console.log('Success!')
         // res.send(req.body.title)
-        res.redirect('/profile/faves')
+        res.send('/faves', {newFav})
     })
     .catch(err => {
         console.log('Error:', err)
@@ -17,17 +17,16 @@ router.post('/results', (req, res) => {
     })
 })
 
-router.delete('/results/:id', (req, res)=> {
+router.delete('/:id', (req, res) => {
     console.log('Yo', req.params.id)
-    db.Post.destroy({
-        where: {id: req.params.id}
+    db.Post.deleteOne({
+            _id: req.params.id
     })
-    .then(() => {
-        res.redirect('/profile/faves')
+    .then(post => {
+        res.send('/faves')
     })
-    .catch(err=> {
-        console.log('Error in delete', err)
-        res.render('error')
+    .catch(err => {
+        console.log("error in Delete single post route", err)
     })
 })
 
