@@ -4,11 +4,7 @@ let db = require('../models')
 // NOTE: User should be logged in to access this route
 router.get('/', (req, res) => {
     // The user is logged in, so req.user should have data!
-    db.Post.findAll({
-    where: { id: req.params.id },
-    include: [db.posts],
-    order: [['createdAt', 'DESC']]
-  })
+    db.Post.find()
   .then(posts => {
       res.send({posts})
   })
