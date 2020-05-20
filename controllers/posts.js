@@ -3,13 +3,13 @@ let db = require('../models')
 
 //get all posts and send em home
 router.get('/', (req, res) => {
-  db.Post.findAll({
-    pic: req.body.pic,
-    content: req.body.content,
-    caption: req.body.caption
-  })
+  db.Post.find()
   .then(posts => {
-    res.send('/', {posts})
+    res.send(posts)
+  })
+  .catch(err => {
+    console.log("error in index route", err)
+    res.status(500).send({ message: 'oops?'})
   })
 })
 
