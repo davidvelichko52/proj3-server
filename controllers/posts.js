@@ -5,7 +5,11 @@ let db = require('../models')
 router.get('/', (req, res) => {
   db.Post.find()
   .then(posts => {
-    res.send({posts})
+    res.send(posts)
+  })
+  .catch(err => {
+    console.log("error in index route", err)
+    res.status(500).send({ message: 'oops?'})
   })
 })
 
