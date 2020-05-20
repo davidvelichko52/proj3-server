@@ -3,13 +3,9 @@ let db = require('../models')
 
 //get all posts and send em home
 router.get('/', (req, res) => {
-  db.Post.findAll({
-    pic: req.body.pic,
-    content: req.body.content,
-    caption: req.body.caption
-  })
+  db.Post.find()
   .then(posts => {
-    res.send('/', {posts})
+    res.send({posts})
   })
 })
 
