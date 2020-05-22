@@ -19,7 +19,7 @@ app.use(cors()) // TODO: Add React app as origin for CORS
 // Routes
 app.use('/auth', require('./controllers/auth'))
 app.use('/profile', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/profile'))
-app.use('/faves', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/faves'))
+app.use('/faves', require('./controllers/faves'))
 app.use('/posts', require('./controllers/posts'))
 
 app.get('*', (req, res) => {

@@ -2,7 +2,7 @@ let router = require('express').Router()
 let db = require('../models')
 
 // NOTE: User should be logged in to access this route
-router.get('/profile', (req, res) => {
+router.get('/', (req, res) => {
     // The user is logged in, so req.user should have data!
     db.Post.find({
       user: req.user._id
