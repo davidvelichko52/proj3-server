@@ -3,13 +3,33 @@ const router = require('express').Router()
 const db = require('../models')
 router.use(require('express').static('static'))
 
-router.post('/', (req, res) => {
-    console.log('YOOOOOOOOO!!!', req.body)
-    db.Post.create(req.body)
-    .then(newFav => {
-        console.log('Success!')
-        // res.send(req.body.title)
-        res.send('/faves', {newFav})
+// fetch call
+// router.post('/', (req, res) => {
+//     console.log('YOOOOOOOOO!!!', req.body)
+//     db.Fave.create(req.body)
+//     .then(newFav => {
+//         console.log('Success!')
+//         // res.send(req.body.title)
+//         res.send('/faves', {newFav})
+//     })
+//     .catch(err => {
+//         console.log('Error:', err)
+//         res.send('Uh oh!')
+//     })
+// })
+
+// https://jimmy.com/faves/1234
+router.get('/:postId', (req, res) => { 
+    console.log(req)
+    let postId = req.params.postId;
+    let userId = req.user._id;
+
+    db.Fave.create({
+        userId: userId,
+        postId: postId
+    })
+    .then(fave => {
+        res.send(fave);
     })
     .catch(err => {
         console.log('Error:', err)
@@ -19,7 +39,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     console.log('Yo', req.params.id)
-    db.Post.deleteOne({
+    db.Fave.deleteOne({
             _id: req.params.id
     })
     .then(post => {
