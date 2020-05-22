@@ -33,7 +33,7 @@ router.post('/new', (req, res) => {
 
 
 //TODO Still needs a button make whole div a clickable link imo //// get route for single post view when clicked on use single postID findOne
-router.get('/:id', (req, res) => {
+router.get('/more/:id', (req, res) => {
     db.Post.findById(
         req.params.id
     )
@@ -47,15 +47,15 @@ router.get('/:id', (req, res) => {
 
 
 //TODO Put button on the inside of single post view page only for proper user or admins /////// create put route for edditing single posts on profile page
-router.post ('/:id', (req, res) => {
+router.post ('/more/:id', (req, res) => {
     db.Post.findOneAndUpdate({
         _id: req.params.id
     },
     {                        
       "$push": {
         "comment": {
-          "name": req.body.name,
-          "text": req.body.text,                                                               
+          "content": req.body.content
+                                                                        
         }
       }
 })
