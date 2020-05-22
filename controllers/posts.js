@@ -18,7 +18,8 @@ router.post('/new', (req, res) => {
   db.Post.create({
     pic: req.body.pic,
     content: req.body.content,
-    caption: req.body.caption
+    caption: req.body.caption,
+    user: req.body.user
   })
   .then(post => {
     res.send(post)
@@ -51,11 +52,11 @@ router.post ('/:id', (req, res) => {
     db.Post.findOneAndUpdate({
         _id: req.params.id
     },
-    {                        
+    {
       "$push": {
         "comment": {
           "name": req.body.name,
-          "text": req.body.text,                                                               
+          "text": req.body.text,
         }
       }
 })
@@ -67,11 +68,12 @@ router.post ('/:id', (req, res) => {
 
 //TODO still needs a button on inside or next to edit post button ///// DELETE route for single post
 router.delete('/:id', (req, res) => {
+  console.log("hitting the delete route")
     db.Post.deleteOne({
             _id: req.params.id
     })
     .then(post => {
-        res.send('')
+        res.send(post)
     })
     .catch(err => {
         console.log("error in Delete single post route", err)
