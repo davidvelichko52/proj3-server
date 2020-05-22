@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => {
 //TODO Still needs a button /////// delete route for profile
 router.delete('/:id', (req, res) => {
     db.User.deleteOne({
-            _id: req.params.id
+            _id: req.params._id
     })
     .then(UserProfile => {
         res.send(UserProfile)
