@@ -3,9 +3,10 @@ let db = require('../models')
 
 // NOTE: User should be logged in to access this route
 router.get('/', (req, res) => {
-    console.log('Hello')
     // The user is logged in, so req.user should have data!
-    db.Post.find()
+    db.Post.find({
+      user: req.user._id
+    })
   .then(posts => {
       res.send({posts})
   })
