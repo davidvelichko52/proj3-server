@@ -18,7 +18,7 @@ router.use(require('express').static('static'))
 //     })
 // })
 
-// https://jimmy.com/faves/1234
+
 router.get('/:postId', (req, res) => { 
     console.log(req)
     let postId = req.params.postId;

@@ -30,8 +30,6 @@ router.post('/new', (req, res) => {
 
 
 
-
-
 //TODO Still needs a button make whole div a clickable link imo //// get route for single post view when clicked on use single postID findOne
 router.get('/:id', (req, res) => {
     db.Post.findById(
