@@ -4,20 +4,31 @@ const db = require('../models')
 router.use(require('express').static('static'))
 
 // fetch call
-// router.post('/', (req, res) => {
-//     console.log('YOOOOOOOOO!!!', req.body)
-//     db.Fave.create(req.body)
-//     .then(newFav => {
-//         console.log('Success!')
-//         // res.send(req.body.title)
-//         res.send('/faves', {newFav})
-//     })
-//     .catch(err => {
-//         console.log('Error:', err)
-//         res.send('Uh oh!')
-//     })
-// })
+router.post('/', (req, res) => {
+    console.log('YOOOOOOOOO!!!', req.body)
+    db.Fave.create(req.body)
+    .then(newFav => {
+        console.log('Success!')
+        // res.send(req.body.title)
+        res.send({newFav})
+    })
+    .catch(err => {
+        console.log('Error:', err)
+        res.send('Uh oh!')
+    })
+})
 
+router.get('/', (req, res) => {
+    db.Fave.find()
+    .populate('postId')
+    .then(allFav => {
+        res.send({allFav})
+    })
+    .catch(err => {
+        console.log('Error:', err)
+        res.send('Uh oh!')
+    })
+})
 
 router.get('/:postId', (req, res) => { 
     console.log(req)
