@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     console.log('YOOOOOOOOO!!!', req.body)
     db.Fave.create(req.body)
     .then(newFav => {
-        console.log('Success!')
+        console.log('Success!', newFav)
         // res.send(req.body.title)
         res.send({newFav})
     })
@@ -30,17 +30,15 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:postId', (req, res) => { 
-    console.log(req)
-    let postId = req.params.postId;
-    let userId = req.user._id;
+router.get('/:userId', (req, res) => { 
+    let myUserId = req.user._id;
 
-    db.Fave.create({
-        userId: userId,
-        postId: postId
+    db.Fave.find({
+        userId: myUserId,
     })
-    .then(fave => {
-        res.send(fave);
+    .then(faves => {
+        console.log('FAVES', faves);
+        res.send(faves);
     })
     .catch(err => {
         console.log('Error:', err)
