@@ -51,11 +51,14 @@ router.post ('/more/:id', (req, res) => {
         _id: req.params.id
     },
     {
-      "$push": {
-        "comment": {
+      $push: {
+        "comments": {
           "content": req.body.content
         }
-      }
+    }
+})
+.then(comment => {
+res.send(comment)
 })
 .catch(err => {
   console.log("error in single post by id route", err)
