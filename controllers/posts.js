@@ -62,6 +62,35 @@ router.post ('/more/:id', (req, res) => {
 })
 })
 
+router.get('/edit', (req, res) => {
+  console.log("hitting the get edit route lets get it you are a king/queen you champion code star");
+    db.Post.findOne({
+        _id: req.body.id
+    })
+    .then(post => {
+        res.send(post)
+    })
+    .catch(err => {
+        console.log('you made a boo boo', err)
+    })
+})
+
+
+router.put('/edit/:id', (req, res) => {
+  console.log("hitting the update route lets get it you are a king/queen you champion code star");
+    db.Post.updateOne({
+        _id: req.params.id
+    },
+    req.body
+    )
+    .then(post => {
+        res.send(post)
+    })
+    .catch(err => {
+        console.log('you made a boo boo', err)
+    })
+})
+
 
 //TODO still needs a button on inside or next to edit post button ///// DELETE route for single post
 router.delete('/:id', (req, res) => {
