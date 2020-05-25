@@ -10,7 +10,6 @@ let faveSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'
     }
-
 })
 
 module.exports = mongoose.model('Fave', faveSchema)
