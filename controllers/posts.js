@@ -82,12 +82,18 @@ router.get('/edit', (req, res) => {
 router.put('/edit/:id', (req, res) => {
   console.log("hitting the update route lets get it you are a king/queen you champion code star");
     db.Post.updateOne({
-        _id: req.params.id
-    },
-    req.body
-    )
+        _id: req.params.id,
+    }, {
+      $set: {
+        "pic" : req.body.pic,
+      "content" : req.body.content,
+      "caption" : req.body.caption
+    }
+    })
     .then(post => {
+       console.log("hitting the edit posts route", post);
         res.send(post)
+
     })
     .catch(err => {
         console.log('you made a boo boo', err)

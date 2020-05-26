@@ -30,6 +30,7 @@ router.put('/:id', (req, res) => {
     req.body
     )
     .then(profileEdit => {
+      
         res.send(profileEdit)
     })
     .catch(err => {
