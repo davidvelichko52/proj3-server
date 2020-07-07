@@ -62,3 +62,24 @@
 | get  | `/` | get profile |
 | put  | `/:id` | edditing profile  |
 | delete  | `:id` | deleting profile |
+
+## Directions For Use
+
+### 1. Clone the repository, but with a diffrent name
+
+Run on the terminal
+
+```sh
+git clone <repo_link> <new_name>
+```
+**For example**
+
+```sh
+git clone git@github.com:davidvelichko52/node-auth-boiler-1.git shiny-new-project
+```
+
+### 2. Install the modules from package.json
+
+```sh
+npm i
+```
