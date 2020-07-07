@@ -1,4 +1,4 @@
-# MERN Auth Boilerplate (Server-side)
+
 
 # Models:
 #### Faves model
