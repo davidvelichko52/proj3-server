@@ -1,4 +1,10 @@
 
+# FriendHub
+Freind hub is a social media website where you as a user can create post and have all the users view your post. In this website you can like a post and have it apear in your favorites, also if you click on apost it'll take you to a page where you can comment and see others comments. This website is using APIS to access the server.
+
+### Live link
+https://friend-hub.herokuapp.com/
+
 
 # Models:
 #### Faves model
